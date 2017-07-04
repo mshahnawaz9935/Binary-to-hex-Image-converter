@@ -1,0 +1,40 @@
+# first build the request body prefix (everything before the image raw data)
+$AccessToken = @"
+eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkTGVfSzdqLXdTYTdWclhTLTY2UTF5UDIwb1dGY0VOcmpzeUdxcnFHOUhsLUluaDl0bWpPVmh1VXFWUEdkU1I3NGlfQzJyUS1YeDdPUVFpNWdFOERNdENBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3Iiwia2lkIjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3In0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNDk5MDc4ODMzLCJuYmYiOjE0OTkwNzg4MzMsImV4cCI6MTQ5OTA4MjczMywiYWNyIjoiMSIsImFpbyI6IlkyWmdZSkJoZjNreVc2TDdyL1NlbithcDBid0cxUjh0dHJtMm01Z3J6MlRmYWVZbGN3b0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkdyYXBoIGV4cGxvcmVyIiwiYXBwaWQiOiJkZThiYzhiNS1kOWY5LTQ4YjEtYThhZC1iNzQ4ZGE3MjUwNjQiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNoYWhuYXdheiBBbGFtIiwiZ2l2ZW5fbmFtZSI6Ik1vaGFtbWFkIiwiaXBhZGRyIjoiMTM0LjIyNi4yMTQuMjIyIiwibmFtZSI6Ik1vaGFtbWFkIFNoYWhuYXdheiBBbGFtIiwib2lkIjoiYzMzYTIxZWMtNWZmOS00MTE1LTgzODMtZDg0NjI0ZmQzYjUwIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTM3ODE1ODA2NzgtNjg5MjYwNDM4LTEyMDg0Mjg4NzItMjM4Mjk3IiwicGxhdGYiOiIzIiwicHVpZCI6IjEwMDM3RkZFQTBGRjgxMUIiLCJzY3AiOiJDYWxlbmRhcnMuUmVhZFdyaXRlIENvbnRhY3RzLlJlYWRXcml0ZSBGaWxlcy5SZWFkV3JpdGUuQWxsIE1haWwuUmVhZFdyaXRlIE5vdGVzLlJlYWRXcml0ZS5BbGwgUGVvcGxlLlJlYWQgU2l0ZXMuUmVhZFdyaXRlLkFsbCBUYXNrcy5SZWFkV3JpdGUgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIiwic2lnbmluX3N0YXRlIjpbImlua25vd25udHdrIl0sInN1YiI6IlNPMkFjc1UtTmk4Q1owa1ptc08xY3V0V3hyWVdoaC0wS3FPSjlwVzA3cmsiLCJ0aWQiOiJkNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIiLCJ1bmlxdWVfbmFtZSI6IlNIQUhOQVdNQHRjZC5pZSIsInVwbiI6IlNIQUhOQVdNQHRjZC5pZSIsInV0aSI6ImxhNy16a2ZiaGtXZE9Qc3hFSk1TQUEiLCJ2ZXIiOiIxLjAifQ.NmmdsOuxvmIbi3agAqgCbpXo5lALedOXpS0KImf-x0vQ9saD6ILPZN_fotYnc30PSYhqILWdQuOa5yT6dZfu3h2OQC4zPu7acYC6KSYy4NBCVwKs14szecdQTxXMA0qLlYEydCq5GMUiFrs3JoOLmOQS7_clcM-cn8mkONlb7_BSIFbHwx944HjFSf0Nt5bKBj9Fg4BnyxrGaTfzj-tdqjMdChF7_WqBAz_4Qqdcq8KceDQZdkgISdhC5zpLfln5DC4lBOZM-uduxWfBP9LFma1rqM9vknh6dOJSPyQa-oOvqDr91nUF6uJCve-j6HmyKMAQ9RAADV4-nAw8bsna1g
+"@
+
+
+$requestBodyPrefix = @"
+--BlockBoundary
+Content-Disposition:form-data; name="Presentation"
+Content-type:text/html
+<!DOCTYPE html>
+  <html>
+    <head><title>Page2 $Counter</title></head>
+    <body><h1>Hello</h1><img src="name:TheImage"/></body>
+  </html>
+--BlockBoundary
+Content-Disposition:form-data; name="TheImage"
+Content-type:image/jpeg
+
+"@
+# save the prefix to a file 
+Add-Content 'RequestBodySavedToFile' $requestBodyPrefix
+
+#now read the image raw data and append to the file
+$imageData = Get-Content 'Mohammad_1.jpg' -Raw -Encoding Byte
+Add-Content 'RequestBodySavedToFile' $imageData -Encoding Byte
+
+# lastly, append the terminating boundary suffix
+$requestBodySuffix = @"
+
+--BlockBoundary--
+"@
+Add-Content 'RequestBodySavedToFile' $requestBodySuffix
+
+#Invoke-RestMethod using the -InFile param
+Invoke-RestMethod -Method Post `
+    -Uri 'https://graph.microsoft.com/v1.0/me/onenote/pages' `
+    -Headers @{"Authorization" = "Bearer " + $AccessToken} `
+    -ContentType 'multipart/form-data; boundary=BlockBoundary' `
+    -InFile 'RequestBodySavedToFile' 
