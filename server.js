@@ -8,9 +8,9 @@ var request = require('request');
   var base64Img = require('base64-img');
 
 var token ='';
-var encodedImage = [];
+
 var x=0;
-var accessToken = 'eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkS0JHclFzV2dhVGZPS0ZyQmFCcktvNllSWUNleW9KdVR1T1VhOHNxTjdaakVZQzQzSGM0TFY5VUpTTkQ1cWdsYzdkVzhxOGZKc3Z4N3VLQ1Z2MlBWbVNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3Iiwia2lkIjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3In0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNDk5MjcyMDYxLCJuYmYiOjE0OTkyNzIwNjEsImV4cCI6MTQ5OTI3NTk2MSwiYWNyIjoiMSIsImFpbyI6IlkyWmdZQkNXbEQzSHV1N0d2WVNZVTBVSHBlMnNlV3lGWmxhbDJuN2YrcUR5MmZYNm5uOEEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkdyYXBoIGV4cGxvcmVyIiwiYXBwaWQiOiJkZThiYzhiNS1kOWY5LTQ4YjEtYThhZC1iNzQ4ZGE3MjUwNjQiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNoYWhuYXdheiBBbGFtIiwiZ2l2ZW5fbmFtZSI6Ik1vaGFtbWFkIiwiaXBhZGRyIjoiMTM0LjIyNi4yMTQuMjIyIiwibmFtZSI6Ik1vaGFtbWFkIFNoYWhuYXdheiBBbGFtIiwib2lkIjoiYzMzYTIxZWMtNWZmOS00MTE1LTgzODMtZDg0NjI0ZmQzYjUwIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTM3ODE1ODA2NzgtNjg5MjYwNDM4LTEyMDg0Mjg4NzItMjM4Mjk3IiwicGxhdGYiOiIzIiwicHVpZCI6IjEwMDM3RkZFQTBGRjgxMUIiLCJzY3AiOiJDYWxlbmRhcnMuUmVhZFdyaXRlIENvbnRhY3RzLlJlYWRXcml0ZSBGaWxlcy5SZWFkV3JpdGUuQWxsIE1haWwuUmVhZFdyaXRlIE5vdGVzLlJlYWRXcml0ZS5BbGwgUGVvcGxlLlJlYWQgU2l0ZXMuUmVhZFdyaXRlLkFsbCBUYXNrcy5SZWFkV3JpdGUgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIiwic2lnbmluX3N0YXRlIjpbImlua25vd25udHdrIl0sInN1YiI6IlNPMkFjc1UtTmk4Q1owa1ptc08xY3V0V3hyWVdoaC0wS3FPSjlwVzA3cmsiLCJ0aWQiOiJkNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIiLCJ1bmlxdWVfbmFtZSI6IlNIQUhOQVdNQHRjZC5pZSIsInVwbiI6IlNIQUhOQVdNQHRjZC5pZSIsInV0aSI6IlRIQ2l5Z0ZtREVHZzR6LTdyLW9ZQUEiLCJ2ZXIiOiIxLjAifQ.Ef5HDqrxlYBaueRR6PUNSgv9gCEcrIhExn09_n2bB1DC7KHcrT1fMg2QsHMHUoTq5kcQJ80dvqLHg-_qsG3JlQOq21JCRW8moF7A13ncnU_73Ma0FFJ-gIBkuV0d9e57EzcYgzjH21zjdZZaJ-kVaJ9d8DJMU73W8I7gSVYkIMuie3BclFTf2SQbbDZzq9eRQOtVASpmSB9lIu7PL2VXZ_0l-0lBcU-qJNmytoavfnSaEwJ7hOjlUyjCbgTtzA34ci1BeHm-FdX890FJzNYmNcT8dvKm2pOlUHoNnHc58O74DWZEWNe4FOqMoMyYfx72tvsH3DCkZgQPPaz5q0-FHw';
+var accessToken = 'eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkeGVNQmVIY0Z3d090SC1URzVzLThEeEV6d1J1b094Y3NnNzZqZllTSS12QV9YZGZKendhX0ZmZ01YUldTSzVzWGQ3eDNsa1dhYWFsQUJ0eU95ZXVtNWlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3Iiwia2lkIjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3In0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNDk5MzYwNzI5LCJuYmYiOjE0OTkzNjA3MjksImV4cCI6MTQ5OTM2NDYyOSwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhEQUFBQWE5R1cycU1RaGE3US83V2dPRlRDZ1lmaGhPeFA4R3FoOUhIK3hjZ29QN2s9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJHcmFwaCBleHBsb3JlciIsImFwcGlkIjoiZGU4YmM4YjUtZDlmOS00OGIxLWE4YWQtYjc0OGRhNzI1MDY0IiwiYXBwaWRhY3IiOiIwIiwiZmFtaWx5X25hbWUiOiJTaGFobmF3YXogQWxhbSIsImdpdmVuX25hbWUiOiJNb2hhbW1hZCIsImlwYWRkciI6IjEzNC4yMjYuMjE0LjIyMiIsIm5hbWUiOiJNb2hhbW1hZCBTaGFobmF3YXogQWxhbSIsIm9pZCI6ImMzM2EyMWVjLTVmZjktNDExNS04MzgzLWQ4NDYyNGZkM2I1MCIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zNzgxNTgwNjc4LTY4OTI2MDQzOC0xMjA4NDI4ODcyLTIzODI5NyIsInBsYXRmIjoiMyIsInB1aWQiOiIxMDAzN0ZGRUEwRkY4MTFCIiwic2NwIjoiQ2FsZW5kYXJzLlJlYWRXcml0ZSBDb250YWN0cy5SZWFkV3JpdGUgRmlsZXMuUmVhZFdyaXRlLkFsbCBNYWlsLlJlYWRXcml0ZSBOb3Rlcy5SZWFkV3JpdGUuQWxsIFBlb3BsZS5SZWFkIFNpdGVzLlJlYWRXcml0ZS5BbGwgVGFza3MuUmVhZFdyaXRlIFVzZXIuUmVhZEJhc2ljLkFsbCBVc2VyLlJlYWRXcml0ZSIsInNpZ25pbl9zdGF0ZSI6WyJpbmtub3dubnR3ayJdLCJzdWIiOiJTTzJBY3NVLU5pOENaMGtabXNPMWN1dFd4cllXaGgtMEtxT0o5cFcwN3JrIiwidGlkIjoiZDU5NWJlOGQtYjMwNi00NWY0LTgwNjQtOWU1YjgyZmJlNTJiIiwidW5pcXVlX25hbWUiOiJTSEFITkFXTUB0Y2QuaWUiLCJ1cG4iOiJTSEFITkFXTUB0Y2QuaWUiLCJ1dGkiOiI5QkV4R3hJMWZVcTQwWTU1SXhJRkFBIiwidmVyIjoiMS4wIn0.MUAggXCCVNAy8DiNoIdmbTJay3osJcQk4WkbJ4jYwXHLnM8cq3D1XWokzauxrJ3SDHToha8AWq-KfA724CfcWSGnSM5WAu-mBjLZgMlKCU3ES3JjYIid-aCV2OjGOJUEzMp2XQQlvFV7Ps0xJ7bOh7k_y90zA07c1ulIMLx0pctsWgXKEvsrH8th33Ki6y-3Q62n-A7KNzx7av3aWmhCdIu1EhlE5VKQX7CZ9k5Dsq-9d2_oefT3Uh44vGhpBzymAaVl0A8gG7mLIMIr8M6fNjlhAzzqT2rIhHmo1AczBJhAdnumlzVAePGtsTQLwRCIH6s8yNecyQOvBFx8wqaazQ';
 
 function getToken (callback)
 {
@@ -58,16 +58,17 @@ app.use(function(req, res, next) {
 
 var decodedImage='';
 
-var url = 'http://kdeg-vm-43.scss.tcd.ie/cjfallon/chp04/imgs-694.jpg';
 var dest = 'file.jpg';
 var buf = new Buffer(1024);
-function writetofile()
+function writetofile(url,callback)
 {
 var file = fs.createWriteStream("file.jpg");
 var request = http.get(url, function(response) {
   response.pipe(file);
+  response.on('end', () => {
+  console.log('There will be no more data.');
 });
- fs.open('file.jpg', 'r+', function(err, fd) {
+   fs.open('file.jpg', 'r+', function(err, fd) {
    if (err) {
       return console.error(err);
    }
@@ -90,14 +91,19 @@ var request = http.get(url, function(response) {
             console.log(err);
          } 
          console.log("File closed successfully.");
+          callback(url);
       });
    });
 });
+  
+});
+
 }
+writetofile('http://kdeg-vm-43.scss.tcd.ie/cjfallon/chp10/P%2062%20oil%20spill_fmt.jpeg', function (data)
+{
+    console.log(data);
 
-writetofile();
-
-
+});
 
 function decode(callback)
 {
@@ -106,14 +112,13 @@ fs.readFile('file.jpg', function(err, data) {
   if (err) throw err;
   console.log('raw data is' , data);
   // Encode to base64
-         encodedImage[x] = new Buffer(data, 'binary').toString('base64');
+       var encodedImage = new Buffer(data, 'binary').toString('base64');
 
   // Decode from base64
   decodedImage = new Buffer(encodedImage, 'base64').toString('binary');
   console.log(encodedImage);
   //console.log(encodedImage , decodedImage);
-  callback(encodedImage[0]);
-  x++;
+  callback(encodedImage);
     });
 }
 
@@ -304,21 +309,56 @@ app.get('/details', function (req, res) {
         }, callback, true);
         });
     
-    };
-var favourites = {};
+    }
+
+  function createOneNoteArticle(accessToken, callback) {
+
+
+            getarticle(function(data){                        
+            htmlForScreenshot = data;
+            
+            console.log(data);
+            
+
+        createPage(accessToken, {
+            'Presentation': {
+                body:   "<!DOCTYPE html>" +
+            "<html>" +
+            "<head>" +
+            "    <title>A page created with a screenshot of HTML on it (Node.js Sample)</title>" +
+            "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\"/>" +
+            "</head>" +
+            "<body>" +
+            "   <p>"+ data + "</p>" + 
+            "</body>" +
+            "</html>",
+                contentType: 'text/html'
+            },
+            'HtmlForScreenshot': {
+                body: data,
+                contentType: 'text/html'
+            }
+        }, callback, true);
+
+            });
+
+    
+    }
+
+var favourites;
 app.get('/posts', (req, res) => {
 
+});
+
+function getarticle(callback)
+{
 console.log('Post token ' + token);
-var url;
-var topic = req.query.topic;
-var chapter = req.query.chapter;
+var url = '';
+var topic = 'lava';
+var chapter = 'pppp';
 var moduleid = '5922b41f74748a1b1c8e440e';
 var modulename = 'Geography';
-var articleid = '864fd1a3aaf64158a8394f617a8b40cb';
-
-
-
-
+var articleid = 'ab9b5d8284bf4b04807030b6cb1ec79c';
 
     var headers = {
         "content-type": "application/json",
@@ -333,15 +373,17 @@ var articleid = '864fd1a3aaf64158a8394f617a8b40cb';
  request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
        //         console.log("post query" + response.body);
-                favourites = response.body;
-       console.log('response article' , response.body , favourites.sections);
+                favourites = JSON.parse(response.body);
+       console.log('response article' , response.body.sections , favourites.sections);
             if(favourites.sections != undefined)
             {
-        //    console.log(favourites.sections.length);
+            console.log('Sections length' ,favourites.sections.length);
             for(var i=0; i< favourites.sections.length; i++) 
-            {  
+            {
+       
                     url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
                     url = url + "<h4>" +  favourites.sections[i].text.text + "</h4>";
+                             console.log('Top of loop i is', i);  
                     try{
                         var image_len = favourites.sections[i].images.length;
                     }
@@ -350,24 +392,49 @@ var articleid = '864fd1a3aaf64158a8394f617a8b40cb';
                     finally { }
                     for(var j=0; j< image_len;j++)
                     {
+                        if(favourites.sections[i].images[j].caption !==null)
+                        {
+                        favourites.sections[i].images[j].caption = favourites.sections[i].images[j].caption.substring(9,favourites.sections[i].images[j].caption.length-3 );
+                    }
+                    else favourites.sections[i].images[j].caption ='No Caption';
                  //     console.log('Image url is ',favourites.sections[i].images[j].url);
+                        if(favourites.sections[i].images[j].attribution == 'cjfallon')
+                        {
+                        console.log('Image attribute cj fallon found' ,favourites.sections[i].images[j].attribution,favourites.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
+                        var attr = favourites.sections[i].images[j].attribution;
+                        var caption =  favourites.sections[i].images[j].caption;
+                        writetofile(favourites.sections[i].images[j].url , function(result) {
+                            decode(function(image){
+
+                                url = url+ "<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + caption +  "</p>"  + "<p>Source:" + attr
+                        + "</p>" ;
+                            });
+                        });
+                        
+                            continue;
+                        }
+                    
                     url = url+ "<p><img src=" + "\"" + favourites.sections[i].images[j].url + "\"" + "/><br>"+
-                    favourites.sections[i].images[j].caption +  "</p><p>" + favourites.sections[i].images[j].attribution
+                    favourites.sections[i].images[j].caption +  "</p><p>Source:" + favourites.sections[i].images[j].attribution
                     + "</p>" ;
                     }
                 }
                }
-               console.log('Url is ' + url);
-            res.send(response.body);
+               setTimeout(function(){   callback(url); } , 1000 );
+               
         }
-        else console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+        else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+        callback(url);
+        }
     });
-});
+}
     
 
 app.get('/writenote', function (req, res) {
 
-     createPageWithScreenshotFromHtml(accessToken , createResultCallback);
+    // createPageWithScreenshotFromHtml(accessToken , createResultCallback);
+
+     createOneNoteArticle(accessToken , createResultCallback);
    
     res.end('wrote');
   
