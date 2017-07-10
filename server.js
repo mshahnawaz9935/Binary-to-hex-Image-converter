@@ -402,9 +402,9 @@ app.get('/details', function (req, res) {
 
 function writer(callback)
 {   
-    var fulldata;
+   // var fulldata;
        getarticle(function(data , obj){
-           fulldata = data;
+           var  fulldata = data;
            console.log('Object Length' ,obj.length);   
            if(obj.length >0)            
             obj.forEach(function(obj) {
@@ -419,11 +419,11 @@ function writer(callback)
                      
                         });
                       
-                           
+                        
                });
-                setTimeout(function() {
-                                callback(fulldata);
-                }, obj.length * 800);
+               setTimeout(function() {
+                                   callback(fulldata);
+               }, obj.length * 800);
             
                       });
                       
