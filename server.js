@@ -10,7 +10,7 @@ var request = require('request');
 var token ='';
 
 var x=0;
-var accessToken = 'eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkWUFMWHM3c283RlVGS2k0amR3M1VrS0dxLVNqeEhpUGNtYzlBQkJUQmVjR2NGQWJGdFNMQ1ZEd2ZWSGVlZ25jZzd5VHlma3hZWkxiTS1MMzBYSlBFamlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3Iiwia2lkIjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3In0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNDk5NDQ3NjgwLCJuYmYiOjE0OTk0NDc2ODAsImV4cCI6MTQ5OTQ1MTU4MCwiYWNyIjoiMSIsImFpbyI6IlkyWmdZRWo4R2RiRDRycDFYdThKNitldHJZeldlbkdWTjFhN09XOXhWNnQrZFpWZmJRa0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkdyYXBoIGV4cGxvcmVyIiwiYXBwaWQiOiJkZThiYzhiNS1kOWY5LTQ4YjEtYThhZC1iNzQ4ZGE3MjUwNjQiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNoYWhuYXdheiBBbGFtIiwiZ2l2ZW5fbmFtZSI6Ik1vaGFtbWFkIiwiaXBhZGRyIjoiMTM0LjIyNi4yMTQuMjIyIiwibmFtZSI6Ik1vaGFtbWFkIFNoYWhuYXdheiBBbGFtIiwib2lkIjoiYzMzYTIxZWMtNWZmOS00MTE1LTgzODMtZDg0NjI0ZmQzYjUwIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTM3ODE1ODA2NzgtNjg5MjYwNDM4LTEyMDg0Mjg4NzItMjM4Mjk3IiwicGxhdGYiOiIzIiwicHVpZCI6IjEwMDM3RkZFQTBGRjgxMUIiLCJzY3AiOiJDYWxlbmRhcnMuUmVhZFdyaXRlIENvbnRhY3RzLlJlYWRXcml0ZSBGaWxlcy5SZWFkV3JpdGUuQWxsIE1haWwuUmVhZFdyaXRlIE5vdGVzLlJlYWRXcml0ZS5BbGwgUGVvcGxlLlJlYWQgU2l0ZXMuUmVhZFdyaXRlLkFsbCBUYXNrcy5SZWFkV3JpdGUgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIiwic2lnbmluX3N0YXRlIjpbImlua25vd25udHdrIl0sInN1YiI6IlNPMkFjc1UtTmk4Q1owa1ptc08xY3V0V3hyWVdoaC0wS3FPSjlwVzA3cmsiLCJ0aWQiOiJkNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIiLCJ1bmlxdWVfbmFtZSI6IlNIQUhOQVdNQHRjZC5pZSIsInVwbiI6IlNIQUhOQVdNQHRjZC5pZSIsInV0aSI6InVUV0h0b0N2bFVxWnZRd2NBWjh0QUEiLCJ2ZXIiOiIxLjAifQ.JHbYvaHYKnxP3PkSBAScTkYoALZgmr6T6Mla05tZc_v8Si28nccixVRR9oMfNJrIWelzW9fjC4jxtroHYwwjDglkc01zWH9eUy0pdNn7TjtsqLnx-WJA4Mz-9TNKZayUUvcDTJJa7BB2__3ZuAU8HcGfL5Tnrplk6cUDe04ymk1wW1U2Lo7HgvmT9N8DGdzqhoFX1YSr3f8Kcwnu8I8WvFXkHA8OfI5UiFJvCu__oCIcd7PJlpYLJnqG4p93zy59SFvmTdKV7z7iZ-lyXD_qPhcLnBMBSwJao5ZUXtQi0b4ShjQ9uWDJbVfj5a5Rd3C4U4IjVhLL3a-M0gdYuQysTw';
+var accessToken = 'eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkYzduQi1YY2duUlVSdkx1RXRYa2J4MkQ0RGpTVlFidG1NRWtQT2JvVC1SVHdvR251X2tTN2hrWElGZTNaMTdSS2pfNE5abEVQeDJ5MUJQV0pRaklBVGlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3Iiwia2lkIjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3In0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNDk5NTYxNDczLCJuYmYiOjE0OTk1NjE0NzMsImV4cCI6MTQ5OTU2NTM3MywiYWNyIjoiMSIsImFpbyI6IlkyWmdZSGduV2ZOT0xqeklKS2JCUnYzbWJ2Ryt4MWFoeFhOeUxCTmtWNWpXZkNrck1nWUEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkdyYXBoIGV4cGxvcmVyIiwiYXBwaWQiOiJkZThiYzhiNS1kOWY5LTQ4YjEtYThhZC1iNzQ4ZGE3MjUwNjQiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNoYWhuYXdheiBBbGFtIiwiZ2l2ZW5fbmFtZSI6Ik1vaGFtbWFkIiwiaXBhZGRyIjoiODMuMTM2LjQ1Ljg5IiwibmFtZSI6Ik1vaGFtbWFkIFNoYWhuYXdheiBBbGFtIiwib2lkIjoiYzMzYTIxZWMtNWZmOS00MTE1LTgzODMtZDg0NjI0ZmQzYjUwIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTM3ODE1ODA2NzgtNjg5MjYwNDM4LTEyMDg0Mjg4NzItMjM4Mjk3IiwicGxhdGYiOiIzIiwicHVpZCI6IjEwMDM3RkZFQTBGRjgxMUIiLCJzY3AiOiJDYWxlbmRhcnMuUmVhZFdyaXRlIENvbnRhY3RzLlJlYWRXcml0ZSBGaWxlcy5SZWFkV3JpdGUuQWxsIE1haWwuUmVhZFdyaXRlIE5vdGVzLlJlYWRXcml0ZS5BbGwgUGVvcGxlLlJlYWQgU2l0ZXMuUmVhZFdyaXRlLkFsbCBUYXNrcy5SZWFkV3JpdGUgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIiwic3ViIjoiU08yQWNzVS1OaThDWjBrWm1zTzFjdXRXeHJZV2hoLTBLcU9KOXBXMDdyayIsInRpZCI6ImQ1OTViZThkLWIzMDYtNDVmNC04MDY0LTllNWI4MmZiZTUyYiIsInVuaXF1ZV9uYW1lIjoiU0hBSE5BV01AdGNkLmllIiwidXBuIjoiU0hBSE5BV01AdGNkLmllIiwidXRpIjoib2VyOHdsdUZoRW0tbkV5bU1lVVFBQSIsInZlciI6IjEuMCJ9.MFHfbzAfs7b6-I6NtPZJcR0XdZjds_Ak-_aWytDRCCtcvS4-WUEeM7zXwHB8gqPOI9sTtMJeMxGw4qB6yVX9JhDLmgMFlgqneuUZ80J-qxEQOiovQC9JR6WOmJQryLuOi-T5bxGJDQqokO9vfndsAAR_r_pwuijeSCKalLkg6PdNO3hWafgEMzw0VOyY1Sfq2i6DcmNCFB44gV5OmIC1fhHf9eiso6qJPjN_dPm6ytsA2ggY6PG369T6v8MYoZ9E6VegcwzXJAy6Cdhj4NirVtQ44dcRUiDWvqRIYNfxZvq_lZt9JVEsMZpiDErqe-sJFxgvYv0k5_emUrdQ25Bf7g';
 
 function getToken (callback)
 {
@@ -63,7 +63,7 @@ var buf = new Buffer(1024);
 function writetofile(filename, url,callback)
 {
 var file = fs.createWriteStream(filename + ".jpg");
-var request = http.get(url, function(response) {
+var request = https.get(url, function(response) {
   response.pipe(file);
   response.on('end', () => {
   console.log('There will be no more data.');
@@ -326,26 +326,100 @@ app.get('/details', function (req, res) {
     
     }
 
+ //createPageWithScreenshotFromHtml2(accessToken , createResultCallback);
+      function createPageWithScreenshotFromHtml2(accessToken, callback) {
+
+          var files= ["521","824"];
+          var encode = [];
+          files.forEach(function(name) {
+              
+              decode(name , function (image){
+                    encode.push(image);
+              });
+
+          });
+         setTimeout(function()
+         {
+             console.log('Encode' ,encode);
+        
+          
+          
+
+        var htmlPayload =
+         "<!DOCTYPE html>" +
+            "<html>" +
+            "<head>" +
+            "    <title>A page created with a screenshot of HTML on it (Node.js Sample)</title>" +
+            "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\"/>" +
+            "</head>" +
+            "<body>" +
+            "    <img src=\"name:HtmlForScreenshot\" /><p>sdsd <img src='data:image/jpeg;base64,"+encode[0] + "' /><img src='data:image/jpeg;base64,"+encode[1] + "' /></p>" +
+            "</body>" +
+            "</html>",
+
+            htmlForScreenshot =
+            "<html>" +
+            "<head>" +
+            "   <title>Embedded HTML</title>" +
+            "</head>" +
+            "<body>" +
+            "    <h1>This is a screen grab of a web page</h1>" +
+            "    <p>" +
+            "    Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
+            "    Nullam vehicula magna quis mauris accumsan, nec imperdiet nisi tempus. " +
+            "    Suspendisse potenti. Duis vel nulla sit amet turpis venenatis elementum. " +
+            "    Cras laoreet quis nisi et sagittis. Donec euismod at tortor ut porta. " +
+            "    Duis libero urna, viverra idaliquam in, ornare sed orci. " +
+            "    Pellentesque condimentum gravida felis, sed pulvinar erat suscipit sit amet. Nulla id felis quis " +
+            "    sem blandit dapibus. " +
+            "    Utviverra auctor nisi ac egestas. " +
+            "    Quisque ac neque nec velit fringilla sagittis porttitor sit amet quam." +
+            "    </p><img src='http://kdeg-vm-43.scss.tcd.ie/cjfallon/chp04/imgs-431.jpg' />" +
+            "</body>" +
+            "</html>";
+         
+ 
+           
+
+            
+
+        createPage(accessToken, {
+            'Presentation': {
+                body: htmlPayload  ,
+                contentType: 'text/html'
+            },
+            'HtmlForScreenshot': {
+                body: encode[0],
+                contentType: 'image/jpeg'
+            }
+        }, callback, true);
+
+ }, 3000);
+    
+    }
+
 function writer(callback)
 {   
     var fulldata;
        getarticle(function(data , obj){
-           fulldata = data;                        
+           fulldata = data;               
             obj.forEach(function(obj) {
          
             // url = url+ "<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + width +  "</p>"  + "<p>Source:" + attr;
              writetofile(obj.width, obj.fileurl , function(result) {
                             decode(obj.width, function(image){
                                   console.log(' new creation is File url is' ,obj.fileurl, obj.width);
-                                fulldata = fulldata+ "<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + obj.width +  "</p>"  + "<p>Source:" + obj.fileurl
+                                fulldata = fulldata +"<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + obj.width +  "</p>"  + "<p>Source:" + obj.fileurl
                         + "</p>" ;
                             });
                      
                         });
-                            setTimeout(function() {
-                                callback(fulldata);
-                            }, 1000);
+                      
+                           
                });
+                setTimeout(function() {
+                                callback(fulldata);
+                            }, 3000);
             
                       });
                       
@@ -427,7 +501,7 @@ var topic = 'lava';
 var chapter = 'pppp';
 var moduleid = '5922b41f74748a1b1c8e440e';
 var modulename = 'Geography';
-var articleid = '49b512bc21c04eb1b4d1cf62a8a67cb3';
+var articleid = 'bbebae794f1440108be30a2cb8dddd8e';
 var obj = [];
 var counter =0;
 
@@ -461,6 +535,7 @@ var counter =0;
                     catch(err)
                     {    continue;  }
                     finally { }
+                    var x=0;
                     for(var j=0; j< image_len;j++)
                     {
                         if(favourites.sections[i].images[j].caption !==null)
@@ -469,8 +544,9 @@ var counter =0;
                         }
                         else favourites.sections[i].images[j].caption ='No Caption';
                  //     console.log('Image url is ',favourites.sections[i].images[j].url);
-                        if(favourites.sections[i].images[j].attribution == 'cjfallon')
-                        {
+                        if(favourites.sections[i].images[j].attribution == 'flickr')
+                        {   
+                        
                         console.log('Image attribute cj fallon found' ,favourites.sections[i].images[j].attribution,favourites.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
                         var caption =  favourites.sections[i].images[j].caption;
                         var fileurl =favourites.sections[i].images[j].url;
@@ -478,6 +554,8 @@ var counter =0;
                           console.log('File url is' ,fileurl );
                           var details = {"caption" : caption , "fileurl" : fileurl , "width" : width  };
                           obj.push(details);
+                          x++;
+
 
                         // writetofile(width, fileurl , function(result) {
                         //     decode(width, function(image){

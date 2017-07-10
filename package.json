@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "base64-img": "^1.0.3",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "request": "^2.81.0",
+    "underscore": "^1.8.3"
   }
 }
