@@ -6,12 +6,15 @@ var request = require('request');
  var https = require ('https');
   var _ = require('underscore');
   var base64Img = require('base64-img');
+  var sha256 = require('sha256');
+  var async = require('async');
 
 var token ='';
 
+var key = '?sv=2016-05-31&ss=bfqt&srt=sco&sp=rwdlacup&se=2017-07-21T18:50:54Z&st=2017-07-21T10:50:54Z&spr=https&sig=76yjezn%2BW6MBbicrncSi76II%2FZ2q9KYHaV3Wij7v3WA%3D';
 var x=0;
-var accessToken = 'eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkdTRyTFk2SVNocXE5bGN3MDMyNG8ybnotMkc5cGJBQl8zVUl1ZUt6ODZsczZqd3JDbkdHTmpDZThGUHMxd0JWdURHbGhNc3RCZWYteFpwb19wZm1SNlNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3Iiwia2lkIjoiOUZYRHBiZk1GVDJTdlF1WGg4NDZZVHdFSUJ3In0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNDk5Njc5MTIxLCJuYmYiOjE0OTk2NzkxMjEsImV4cCI6MTQ5OTY4MzAyMSwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhEQUFBQWZrVyt5TEwweit6TjBIbDJwOEtZQUQ2YUxYdE5BbHI3eGc3MktBTkNHa009IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJHcmFwaCBleHBsb3JlciIsImFwcGlkIjoiZGU4YmM4YjUtZDlmOS00OGIxLWE4YWQtYjc0OGRhNzI1MDY0IiwiYXBwaWRhY3IiOiIwIiwiZmFtaWx5X25hbWUiOiJTaGFobmF3YXogQWxhbSIsImdpdmVuX25hbWUiOiJNb2hhbW1hZCIsImlwYWRkciI6IjEzNC4yMjYuMjE0LjIyMiIsIm5hbWUiOiJNb2hhbW1hZCBTaGFobmF3YXogQWxhbSIsIm9pZCI6ImMzM2EyMWVjLTVmZjktNDExNS04MzgzLWQ4NDYyNGZkM2I1MCIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zNzgxNTgwNjc4LTY4OTI2MDQzOC0xMjA4NDI4ODcyLTIzODI5NyIsInBsYXRmIjoiMyIsInB1aWQiOiIxMDAzN0ZGRUEwRkY4MTFCIiwic2NwIjoiQ2FsZW5kYXJzLlJlYWRXcml0ZSBDb250YWN0cy5SZWFkV3JpdGUgRmlsZXMuUmVhZFdyaXRlLkFsbCBNYWlsLlJlYWRXcml0ZSBOb3Rlcy5SZWFkV3JpdGUuQWxsIFBlb3BsZS5SZWFkIFNpdGVzLlJlYWRXcml0ZS5BbGwgVGFza3MuUmVhZFdyaXRlIFVzZXIuUmVhZEJhc2ljLkFsbCBVc2VyLlJlYWRXcml0ZSIsInNpZ25pbl9zdGF0ZSI6WyJpbmtub3dubnR3ayJdLCJzdWIiOiJTTzJBY3NVLU5pOENaMGtabXNPMWN1dFd4cllXaGgtMEtxT0o5cFcwN3JrIiwidGlkIjoiZDU5NWJlOGQtYjMwNi00NWY0LTgwNjQtOWU1YjgyZmJlNTJiIiwidW5pcXVlX25hbWUiOiJTSEFITkFXTUB0Y2QuaWUiLCJ1cG4iOiJTSEFITkFXTUB0Y2QuaWUiLCJ1dGkiOiJoZXlndjNUNHpVMnRVYXF6NTM4WUFBIiwidmVyIjoiMS4wIn0.RNtabNCA8EEqNSGej2GEsJcj9IS3iBZ_O6ZRq5d65J8B5R0oTNDq_xspGd1NlY5aaUTP6VFx4wni_oVHklhP4omiS9jHJ25AwU_ovITzQ8l6eJJz3uEaGYIVgP2kpXMxXSmA79N8lYA8P7afv9Ih--QHOMIp3SKl4RuHlvQMYNLfHIiOuhcEbiufflVoE7qnFjTcORD9F4pYkK6cYGfXoYSc3AfehhSO9RklN5iLfzsPSarc2QzZUpMDMwO9vH9zkK3dl1Ju0m5jD0jwxTQ0VHaHBhQLJUXfD8fEeSeEDcl4Lfp1x9q0eL_mdGmx8NRXO19tDei0TztK-Toxd4ZSRQ';
 
+var accessToken = 'eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFBOWtUa2xoVnk3U0pUR0F6Ui1wMUJjUmFIODBCdkVIVDFNeGNZd3AwX2RvQ1R3UVhDT1VBR3BLSk80TUU2Q2ZsUFZBaFIzVHZNNDdKX1ptMDJDbDhfQk9hRm1iTHgyUjBSVHdUVW9vTXUtOXlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiVldWSWMxV0QxVGtzYmIzMDFzYXNNNWtPcTVRIiwia2lkIjoiVldWSWMxV0QxVGtzYmIzMDFzYXNNNWtPcTVRIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNTA0MDI5NjAzLCJuYmYiOjE1MDQwMjk2MDMsImV4cCI6MTUwNDAzMzUwMywiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhFQUFBQTJUTFV2OEQrVzZ1T0hpdVBxN29NdkJKc0hKOC9iNlpveHF3ZnBIMGFhSzg9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJHcmFwaCBleHBsb3JlciIsImFwcGlkIjoiZGU4YmM4YjUtZDlmOS00OGIxLWE4YWQtYjc0OGRhNzI1MDY0IiwiYXBwaWRhY3IiOiIwIiwiZmFtaWx5X25hbWUiOiJTaGFobmF3YXogQWxhbSIsImdpdmVuX25hbWUiOiJNb2hhbW1hZCIsImlwYWRkciI6IjEzNC4yMjYuMjE0LjIyMiIsIm5hbWUiOiJNb2hhbW1hZCBTaGFobmF3YXogQWxhbSIsIm9pZCI6ImMzM2EyMWVjLTVmZjktNDExNS04MzgzLWQ4NDYyNGZkM2I1MCIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zNzgxNTgwNjc4LTY4OTI2MDQzOC0xMjA4NDI4ODcyLTIzODI5NyIsInBsYXRmIjoiMyIsInB1aWQiOiIxMDAzN0ZGRUEwRkY4MTFCIiwic2NwIjoiQ2FsZW5kYXJzLlJlYWRXcml0ZSBDb250YWN0cy5SZWFkV3JpdGUgRmlsZXMuUmVhZFdyaXRlLkFsbCBNYWlsLlJlYWRXcml0ZSBOb3Rlcy5SZWFkV3JpdGUuQWxsIFBlb3BsZS5SZWFkIFNpdGVzLlJlYWRXcml0ZS5BbGwgVGFza3MuUmVhZFdyaXRlIFVzZXIuUmVhZEJhc2ljLkFsbCBVc2VyLlJlYWRXcml0ZSIsInNpZ25pbl9zdGF0ZSI6WyJpbmtub3dubnR3ayJdLCJzdWIiOiJTTzJBY3NVLU5pOENaMGtabXNPMWN1dFd4cllXaGgtMEtxT0o5cFcwN3JrIiwidGlkIjoiZDU5NWJlOGQtYjMwNi00NWY0LTgwNjQtOWU1YjgyZmJlNTJiIiwidW5pcXVlX25hbWUiOiJTSEFITkFXTUB0Y2QuaWUiLCJ1cG4iOiJTSEFITkFXTUB0Y2QuaWUiLCJ1dGkiOiItdFNuY0hueUhVS3pwb3J0c2xrSUFBIiwidmVyIjoiMS4wIn0.XU_BddvbpZ4f_fpSr5jGcXn55tr4UbM9XhlIoT3hpLraWQdPybbeOkzZlXm_cd8tUExbPLiWYIDXFAGbMYjihCODeCYrPaRHz9Lk44YgZHBVluW4Rx9pcgrHuTMgznhvgHib5Yg4y0FRkovqxFye9ddgMQLayHmADm5L8QNIz51aRmywN2OuCjX2GljtWGmydJUM_6POYslbN9zXmH_YjO6BnAdntNhK3vsPo-u7lqqowoNfylJPCiGabljQePgtFxUD2KyoPdRpo2xRpBiDrfA6l0rrfd0zzYIZQBSwqe9c8P85dU6z4ce5XtKvIQewK8VfGAo86qTH92Q2lVZbyA'; 
 function getToken (callback)
 {
     var token = '';
@@ -41,6 +44,7 @@ function getToken (callback)
 }
 
 
+
     getToken(function (t)
     {
         console.log(t);
@@ -63,38 +67,19 @@ var buf = new Buffer(1024);
 function writetofile(filename, url,callback)
 {
 var file = fs.createWriteStream(filename + ".jpg");
-var request = http.get(url, function(response) {
+var client = http;
+// You can use url.protocol as well 
+if (url.toString().indexOf("https") === 0){
+            client = https;
+}
+
+var request = client.get(url, function(response) {
   response.pipe(file);
-  response.on('end', () => {
+  file.on('close', function () {
   console.log('There will be no more data.');
+     callback(filename);
 });
-   fs.open(filename + '.jpg', 'r+', function(err, fd) {
-   if (err) {
-      return console.error(err);
-   }
-   console.log("File opened successfully!");
-   console.log("Going to read the file");
-   
-   fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
-      if (err){
-         console.log(err);
-      }
 
-      // Print only read bytes to avoid junk.
-      if(bytes > 0){
-         console.log(buf.slice(0, bytes).toString());
-      }
-
-      // Close the opened file.
-      fs.close(fd, function(err){
-         if (err){
-            console.log(err);
-         } 
-         console.log("File closed successfully.");
-          callback(url);
-      });
-   });
-});
   
 });
 
@@ -117,7 +102,7 @@ fs.readFile(filename+'.jpg', function(err, data) {
   //console.log(encodedImage , decodedImage);
   
   callback(encodedImage);
-  deletefile(filename);
+  //deletefile(filename);
     });
         
  
@@ -132,6 +117,20 @@ function deletefile(filename)
    console.log("File deleted successfully!");
 })
 }
+
+
+app.get('/validatemail', (req, res) => {
+
+    var email = req.query.id;
+     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+     
+   var k=  re.test(email);
+   if(k == true)
+   res.json('email correct');
+   else
+   res.json(sha256());
+
+});
 
 
 function aboutme(token, callback)
@@ -189,7 +188,7 @@ function createPage(accessToken, payload, callback, multipart) {
 
         console.log('here');
         var options = {
-            url: 'https://graph.microsoft.com/v1.0/me/onenote/pages',
+            url: 'https://www.onenote.com/api/v1.0/me/notes/pages',
             headers: {'Authorization': 'Bearer ' + accessToken}
         };
         // Build simple request
@@ -296,10 +295,10 @@ app.get('/details', function (req, res) {
             "</html>";
          
  
-            writetofile('http://kdeg-vm-43.scss.tcd.ie/cjfallon/chp10/P%2062%20oil%20spill_fmt.jpeg', function (data)
+            writetofile('xyz', 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/07e72df0-2c01-11e7-aec8-676aa0a8f3e0'+ key, function (data)
         {
 
-            decode(function(image){
+            decode(data, function(image){
 
             
 
@@ -328,24 +327,30 @@ app.get('/details', function (req, res) {
     
     }
 
+function encoder(url , callback)
+{
+  var request = require('request').defaults({ encoding: null });
+
+request.get(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        data = new Buffer(body).toString('base64');
+        console.log('Dat Length' ,data.length);
+        console.log((data.toString().length));    
+        console.log(url);
+        callback(data);
+    }
+});
+}
  //createPageWithScreenshotFromHtml2(accessToken , createResultCallback);
       function createPageWithScreenshotFromHtml2(accessToken, callback) {
 
-          var files= ["521","824"];
-          var encode = [];
-          files.forEach(function(name) {
-              
-              decode(name , function (image){
-                    encode.push(image);
-              });
 
-          });
-         setTimeout(function()
-         {
-             console.log('Encode' ,encode);
-        
-          
-          
+var fileurl = 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/6a251030-3bb6-11e7-9286-c7bc5b9945d0.jpg?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D';
+           
+           encoder(fileurl ,function(image)
+            {      
+                    
+                      
 
         var htmlPayload =
          "<!DOCTYPE html>" +
@@ -355,7 +360,7 @@ app.get('/details', function (req, res) {
             "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\"/>" +
             "</head>" +
             "<body>" +
-            "    <img src=\"name:HtmlForScreenshot\" /><p>sdsd <img src='data:image/jpeg;base64,"+encode[0] + "' /><img src='data:image/jpeg;base64,"+encode[1] + "' /></p>" +
+            "    <img src=\"name:HtmlForScreenshot\" /><p>sdsd <img src='data:image/jpeg;base64,"+ image + "' /></p>" +
             "</body>" +
             "</html>",
 
@@ -391,12 +396,12 @@ app.get('/details', function (req, res) {
                 contentType: 'text/html'
             },
             'HtmlForScreenshot': {
-                body: encode[0],
+                body: image,
                 contentType: 'image/jpeg'
             }
         }, callback, true);
 
- }, 3000);
+          });
     
     }
 
@@ -428,12 +433,131 @@ function writer(callback)
                       });
                       
 }
+ function writer2(callback)
+    {   
+   // var fulldata;
+    var moduleid = '599b0d8c62f88c1c3089fb7d';
+    var articleid = '9e689d4d22f44052830ace8db185afed';
+       getarticle2(articleid,function(data , obj){
+
+          console.log('Object is' , obj);
+          
+var url = '';
+var counter =0;
+
+    var headers = {
+        "content-type": "application/json",
+        Authorization: 'Bearer ' + token
+    }
+    var options = {
+             url:'https://services.almanac-learning.com/composer/students/593ec91f27d6e412505c1d17/instances/'+ moduleid +'/articles/' + articleid + '/',
+        method: 'GET',
+        headers: headers,
+    }
+    console.log(options.url);
+ request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+       //         console.log("post query" + response.body);
+                favourites = JSON.parse(response.body);
+               var counter = 0;
+       console.log('response article' , response.body.modes , favourites.modes );
+            var x=0;
+            if(favourites.modes != undefined)
+            {
+            console.log('Modes length' ,favourites.modes.length , obj.length);
+             obj.forEach(function(obj) {
+                  console.log(obj.fileurl);
+             })
+            favourites.modes.forEach(function (mode)
+            {
+            // for(var i=0; i< mode.sections.length; i++) 
+            // {
+              mode.sections.some(function(section)
+              {
+                //   if(chapter == 'The States of Matter' && counter > 2)
+                //   {
+                //     console.log('BREAKING' , counter);
+                //   return true;
+                // }
+                // else counter++;
+                  
+                  url = url + "<h1>" + section.title + "</h1>";
+                    url = url + "<h2>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h2>";
+                     if(section.images !==  undefined)
+                    url = url + " <h3>Images from this section are as under</h3>";
+                    try{
+                        var image_len = section.images.length;
+                    }
+                    catch(err)
+                    {   // continue;  
+                    }
+                    finally { }
+                    if(section.videos !== undefined)
+                    if(section.videos.length > 0)
+                    url = url + "<br><iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + section.videos[0].url + "' /><br>" ;
+                    if(section.images !== undefined)
+                    section.images.forEach(function(image)
+                    {
+                        if(image.caption !==null)
+                        {
+                        image.caption = image.caption.substring(9,image.caption.length-3 );
+                        }
+                        else image.caption ='Caption '+ Math.floor((Math.random() * 1000) + 1);
+                 //     console.log('Image url is ',favourites.sections[i].images[j].url);
+                        if(image.attribution == 'Publisher')   // change name to stop check
+                        {   
+
+                       // console.log('Image attribute cj fallon found' ,image.attribution,image.url);
+                        var caption =  image.caption;
+                        var fileurl = image.url + key;
+                        var width =  image.width;
+                        var attr = 'Publisher';
+                           if(obj.length >0)            
+                               obj.some(function(obj) {
+                                  
+                                 if(obj.fileurl == fileurl)
+                                 {
+                                   console.log('matched');
+                                  console.log('File url is' ,fileurl );
+                                    url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
+                          obj.width +  "</p><p>Source:" + obj.attr
+                          + "</p>" ;
+                                  return true;
+                                 }
+                     
+                               })
+
+                        
+
+
+                        }
+                        else {
+                    
+                    url = url+ "<p><img src=" + "\"" + image.url + "\"" + "/><br>"+
+                    image.caption +  "</p><p>Source:" + image.attribution
+                    + "</p>" ;
+                        }
+                        url = url + '<br>';
+                    })
+             
+                })
+              })
+               }
+                callback(url);
+        }
+        else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+      }
+           
+    });
+ });
+                      
+}
 
 
   function createOneNoteArticle(accessToken, callback) {
 
 
-         writer(function(data){
+         writer2(function(data ){
 
         createPage(accessToken, {
             'Presentation': {
@@ -468,44 +592,13 @@ function writer(callback)
     }
 
 var favourites;
-app.get('/posts', (req, res) => {
 
-
-        
-        var images = [];
-        x=0;
-        writetofile('http://kdeg-vm-43.scss.tcd.ie/cjfallon/chp10/P%2062%20oil%20spill_fmt.jpeg', function (data)
-        {
-        console.log(data);
-        decode(function(image){
-            images.push(image);
-            x++;
-        });
-    });
-        setTimeout(function() {
-      writetofile('http://kdeg-vm-43.scss.tcd.ie/cjfallon/chp04/imgs-431.jpg', function (data)
-        {
-        console.log(data);
-        decode(function(image){
-            images.push(image);
-            x++;
-        });
-    });
-    res.json(images.length);
-    console.log(images.length);
-        },3000);
-
-});
-
-function getarticle(callback)
+function getarticle2(articleid , callback)
 {
-console.log('Post token ' + token);
+    var favourites ={};
 var url = '';
-var topic = 'lava';
-var chapter = 'pppp';
-var moduleid = '5922b41f74748a1b1c8e440e';
+var moduleid = '599b0d8c62f88c1c3089fb7d';
 var modulename = 'Geography';
-var articleid = 'a23b987faec741ecad1575e532b9359b';
 var obj = [];
 var counter =0;
 
@@ -514,8 +607,8 @@ var counter =0;
         Authorization: 'Bearer ' + token 
     }
     var options = {
-         url:'http://services.almanac-learning.com/personalised-composition-service/composer/students/593ec91f27d6e412505c1d17/instances/5922b41f74748a1b1c8e440e/articles/' + articleid + '/',
-        method: 'GET',
+       url:'https://services.almanac-learning.com/composer/students/593ec91f27d6e412505c1d17/instances/599b0d8c62f88c1c3089fb7d/articles/' + articleid + '/',   
+     method: 'GET',
         headers: headers,
     }
     console.log(options.url);
@@ -523,74 +616,75 @@ var counter =0;
         if (!error && response.statusCode == 200) {
        //         console.log("post query" + response.body);
                 favourites = JSON.parse(response.body);
-       console.log('response article' , response.body.sections , favourites.sections);
-            if(favourites.sections != undefined)
+       console.log('response article' , response.body.modes , favourites.modes);
+       var x=0;
+            if(favourites.modes != undefined)
             {
-            console.log('Sections length' ,favourites.sections.length);
-            for(var i=0; i< favourites.sections.length; i++) 
+            console.log('Modes length' ,favourites.modes.length);
+            favourites.modes.forEach(function (mode)
             {
-       
-                    url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
-                    url = url + "<h4>" +  favourites.sections[i].text.text + "</h4>";
+            // for(var i=0; i< mode.sections.length; i++) 
+            // {
+              mode.sections.forEach(function(section)
+              {
+                    url = url + " <h3>Images from this section are as under</h3>";
+                    url = url + "<h4>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h4>";
                     try{
-                        var image_len = favourites.sections[i].images.length;
+                        var image_len = section.images.length;
                     }
                     catch(err)
-                    {    continue;  }
-                    finally { }
-                    var x=0;
-                    for(var j=0; j< image_len;j++)
-                    {
-                        if(favourites.sections[i].images[j].caption !==null)
-                        {
-                        favourites.sections[i].images[j].caption = favourites.sections[i].images[j].caption.substring(9,favourites.sections[i].images[j].caption.length-3 );
-                        }
-                        else favourites.sections[i].images[j].caption ='No Caption';
-                 //     console.log('Image url is ',favourites.sections[i].images[j].url);
-                        if(favourites.sections[i].images[j].attribution == 'cjfallon')
-                        {   
-                        
-                        console.log('Image attribute cj fallon found' ,favourites.sections[i].images[j].attribution,favourites.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
-                        var caption =  favourites.sections[i].images[j].caption;
-                        var fileurl =favourites.sections[i].images[j].url;
-                        var width = favourites.sections[i].images[j].width;
-                        var attr = 'cjfallon';
-                          console.log('File url is' ,fileurl );
-                          var details = {"attr" : attr , "fileurl" : fileurl , "width" : width  };
-                          obj.push(details);
-                          x++;
-
-
-                        // writetofile(width, fileurl , function(result) {
-                        //     decode(width, function(image){
-                        //           console.log('File url is' ,fileurl, width);
-                        //         url = url+ "<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + width +  "</p>"  + "<p>Source:" + attr
-                        // + "</p>" ;
-                        //     });
-                        // });
-                        }
-                        else {
-                    
-                    url = url+ "<p><img src=" + "\"" + favourites.sections[i].images[j].url + "\"" + "/><br>"+
-                    favourites.sections[i].images[j].caption +  "</p><p>Source:" + favourites.sections[i].images[j].attribution
-                    + "</p>" ;
-                        }
+                    {   // continue;  
                     }
-                }
+                    finally { }
+                    if(section.videos !== undefined)
+                    if(section.videos.length > 0)
+                    url = url + "<br><iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + section.videos[0].url + "' /><br>" ;
+                    if(section.images !== undefined)
+                    section.images.forEach(function(image)
+                    {
+                        if(image.caption !==null)
+                        {
+                        image.caption = image.caption.substring(9,image.caption.length-3 );
+                        }
+                        else image.caption ='Caption '+ Math.floor((Math.random() * 1000) + 1);
+                 //     console.log('Image url is ',favourites.sections[i].images[j].url);
+                        if(image.attribution == 'Publisher')   // change name to stop check
+                        {   
+                        var caption =  image.caption;
+                        var fileurl = image.url + key;
+                          console.log('Image attribute cj fallon found' ,image.attribution, fileurl);
+                        var attr = 'Publisher';
+                        //  console.log('File url is' ,fileurl );
+                       
+                        encoder(fileurl ,function(image)
+                        {
+                        //         url = url +"<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + obj1.width +  "</p>"  + "<p>Source:" + obj1.attr
+                        // + "</p>" ;
+                               var obj1 = {"attr" : attr , "fileurl" : fileurl , "width" : caption , "data" : image };
+                            obj.push(obj1);
+                          x++;
+                        });
+                        }
+                      
+                    })
+                })
+              })
+       
                }
-               callback(url , obj);
+                 callback(url , obj);
                
         }
         else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
         callback(url , obj);
         }
     });
+  
 }
-    
+
 
 app.get('/writenote', function (req, res) {
 
-   //  createPageWithScreenshotFromHtml(accessToken , createResultCallback);
+   //  createPageWithScreenshotFromHtml2(accessToken , createResultCallback);
 
      createOneNoteArticle(accessToken , createResultCallback);
    
@@ -599,6 +693,9 @@ app.get('/writenote', function (req, res) {
 
    
 });
+
+
+
 
 const port = process.env.PORT || '3000';
 app.get('/', function (req, res) {
