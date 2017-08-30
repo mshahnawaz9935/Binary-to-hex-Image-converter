@@ -14,7 +14,7 @@ var token ='';
 var key = '?sv=2016-05-31&ss=bfqt&srt=sco&sp=rwdlacup&se=2017-07-21T18:50:54Z&st=2017-07-21T10:50:54Z&spr=https&sig=76yjezn%2BW6MBbicrncSi76II%2FZ2q9KYHaV3Wij7v3WA%3D';
 var x=0;
 
-var accessToken = 'eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFBOWtUa2xoVnk3U0pUR0F6Ui1wMUJjUmFIODBCdkVIVDFNeGNZd3AwX2RvQ1R3UVhDT1VBR3BLSk80TUU2Q2ZsUFZBaFIzVHZNNDdKX1ptMDJDbDhfQk9hRm1iTHgyUjBSVHdUVW9vTXUtOXlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiVldWSWMxV0QxVGtzYmIzMDFzYXNNNWtPcTVRIiwia2lkIjoiVldWSWMxV0QxVGtzYmIzMDFzYXNNNWtPcTVRIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNTA0MDI5NjAzLCJuYmYiOjE1MDQwMjk2MDMsImV4cCI6MTUwNDAzMzUwMywiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhFQUFBQTJUTFV2OEQrVzZ1T0hpdVBxN29NdkJKc0hKOC9iNlpveHF3ZnBIMGFhSzg9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJHcmFwaCBleHBsb3JlciIsImFwcGlkIjoiZGU4YmM4YjUtZDlmOS00OGIxLWE4YWQtYjc0OGRhNzI1MDY0IiwiYXBwaWRhY3IiOiIwIiwiZmFtaWx5X25hbWUiOiJTaGFobmF3YXogQWxhbSIsImdpdmVuX25hbWUiOiJNb2hhbW1hZCIsImlwYWRkciI6IjEzNC4yMjYuMjE0LjIyMiIsIm5hbWUiOiJNb2hhbW1hZCBTaGFobmF3YXogQWxhbSIsIm9pZCI6ImMzM2EyMWVjLTVmZjktNDExNS04MzgzLWQ4NDYyNGZkM2I1MCIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zNzgxNTgwNjc4LTY4OTI2MDQzOC0xMjA4NDI4ODcyLTIzODI5NyIsInBsYXRmIjoiMyIsInB1aWQiOiIxMDAzN0ZGRUEwRkY4MTFCIiwic2NwIjoiQ2FsZW5kYXJzLlJlYWRXcml0ZSBDb250YWN0cy5SZWFkV3JpdGUgRmlsZXMuUmVhZFdyaXRlLkFsbCBNYWlsLlJlYWRXcml0ZSBOb3Rlcy5SZWFkV3JpdGUuQWxsIFBlb3BsZS5SZWFkIFNpdGVzLlJlYWRXcml0ZS5BbGwgVGFza3MuUmVhZFdyaXRlIFVzZXIuUmVhZEJhc2ljLkFsbCBVc2VyLlJlYWRXcml0ZSIsInNpZ25pbl9zdGF0ZSI6WyJpbmtub3dubnR3ayJdLCJzdWIiOiJTTzJBY3NVLU5pOENaMGtabXNPMWN1dFd4cllXaGgtMEtxT0o5cFcwN3JrIiwidGlkIjoiZDU5NWJlOGQtYjMwNi00NWY0LTgwNjQtOWU1YjgyZmJlNTJiIiwidW5pcXVlX25hbWUiOiJTSEFITkFXTUB0Y2QuaWUiLCJ1cG4iOiJTSEFITkFXTUB0Y2QuaWUiLCJ1dGkiOiItdFNuY0hueUhVS3pwb3J0c2xrSUFBIiwidmVyIjoiMS4wIn0.XU_BddvbpZ4f_fpSr5jGcXn55tr4UbM9XhlIoT3hpLraWQdPybbeOkzZlXm_cd8tUExbPLiWYIDXFAGbMYjihCODeCYrPaRHz9Lk44YgZHBVluW4Rx9pcgrHuTMgznhvgHib5Yg4y0FRkovqxFye9ddgMQLayHmADm5L8QNIz51aRmywN2OuCjX2GljtWGmydJUM_6POYslbN9zXmH_YjO6BnAdntNhK3vsPo-u7lqqowoNfylJPCiGabljQePgtFxUD2KyoPdRpo2xRpBiDrfA6l0rrfd0zzYIZQBSwqe9c8P85dU6z4ce5XtKvIQewK8VfGAo86qTH92Q2lVZbyA'; 
+var accessToken = 'eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFBOWtUa2xoVnk3U0pUR0F6Ui1wMUJjcFR4UURtTVpuNGEzb3hBT2JzUFppNXU4S1FITmp3TzdlVVd3RDhPbUVOeG9qQ2g3UFptbUhrWjdmVEpmbGNBWFk1M0Z5Q1VXOXpiV3cyWjhtUzBOS0NBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiVldWSWMxV0QxVGtzYmIzMDFzYXNNNWtPcTVRIiwia2lkIjoiVldWSWMxV0QxVGtzYmIzMDFzYXNNNWtPcTVRIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIvIiwiaWF0IjoxNTA0MTEyODg2LCJuYmYiOjE1MDQxMTI4ODYsImV4cCI6MTUwNDExNjc4NiwiYWNyIjoiMSIsImFpbyI6IlkyRmdZSWlYK3pWNVc0V1YwNzZkN1U4bjhydmZWUkt0ZXM5K3R5VTFmM2JTNGZaSjNxSUEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkdyYXBoIGV4cGxvcmVyIiwiYXBwaWQiOiJkZThiYzhiNS1kOWY5LTQ4YjEtYThhZC1iNzQ4ZGE3MjUwNjQiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNoYWhuYXdheiBBbGFtIiwiZ2l2ZW5fbmFtZSI6Ik1vaGFtbWFkIiwiaXBhZGRyIjoiMTM0LjIyNi4yMTQuMjIyIiwibmFtZSI6Ik1vaGFtbWFkIFNoYWhuYXdheiBBbGFtIiwib2lkIjoiYzMzYTIxZWMtNWZmOS00MTE1LTgzODMtZDg0NjI0ZmQzYjUwIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTM3ODE1ODA2NzgtNjg5MjYwNDM4LTEyMDg0Mjg4NzItMjM4Mjk3IiwicGxhdGYiOiIzIiwicHVpZCI6IjEwMDM3RkZFQTBGRjgxMUIiLCJzY3AiOiJDYWxlbmRhcnMuUmVhZFdyaXRlIENvbnRhY3RzLlJlYWRXcml0ZSBGaWxlcy5SZWFkV3JpdGUuQWxsIE1haWwuUmVhZFdyaXRlIE5vdGVzLlJlYWRXcml0ZS5BbGwgUGVvcGxlLlJlYWQgU2l0ZXMuUmVhZFdyaXRlLkFsbCBUYXNrcy5SZWFkV3JpdGUgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIiwic2lnbmluX3N0YXRlIjpbImlua25vd25udHdrIl0sInN1YiI6IlNPMkFjc1UtTmk4Q1owa1ptc08xY3V0V3hyWVdoaC0wS3FPSjlwVzA3cmsiLCJ0aWQiOiJkNTk1YmU4ZC1iMzA2LTQ1ZjQtODA2NC05ZTViODJmYmU1MmIiLCJ1bmlxdWVfbmFtZSI6IlNIQUhOQVdNQHRjZC5pZSIsInVwbiI6IlNIQUhOQVdNQHRjZC5pZSIsInV0aSI6IkUtZHgxdENoUVVXN3ZoUDJpc3NRQUEiLCJ2ZXIiOiIxLjAifQ.reNzmtI1zS0z8ly5CBK0OFvoyoPPfXvGb-1AQrcXv91ZztRgM2zirkekp31vgHvxIzvs5Ex-B6haFprDr1ID6jmo2ferd4Sa84z6lnbMAs2tc4UK-fhVabHgGhvGY7wFFJEBw3afZ2v0Q35Jup7r45MlHgaDXcvo2UtPEfxL0ZS3WxZDFxFhJgs9Bjj5fUTr2PW1CFXuqvsXudO_mEtjNvh_SF3dU_X5_VcKebA_3SsVRbCLb0cgFnSgcCPWa2S4yPZNq8DDZLWeH-ZjF9Df8WDbejEAgmpgwVms1d0UXLqIdZy8DUI6TXJrNXjoUi02SxfPC8LmxTq6IaYyQS7gmQ';
 function getToken (callback)
 {
     var token = '';
@@ -188,7 +188,7 @@ function createPage(accessToken, payload, callback, multipart) {
 
         console.log('here');
         var options = {
-            url: 'https://www.onenote.com/api/v1.0/me/notes/pages',
+            url: 'https://graph.microsoft.com/v1.0/me/onenote/pages',
             headers: {'Authorization': 'Bearer ' + accessToken}
         };
         // Build simple request
@@ -345,13 +345,50 @@ request.get(url, function (error, response, body) {
       function createPageWithScreenshotFromHtml2(accessToken, callback) {
 
 
-var fileurl = 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/6a251030-3bb6-11e7-9286-c7bc5b9945d0.jpg?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D';
+var fileurl = [
+//     'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/6a251030-3bb6-11e7-9286-c7bc5b9945d0.jpg?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/373c3110-2beb-11e7-aec8-676aa0a8f3e0?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f0cf91d0-30d2-11e7-932e-75387e89fb02?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+//  'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f13ad6c0-30d2-11e7-932e-75387e89fb02?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f1542b20-30d2-11e7-932e-75387e89fb02?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f06955f0-30d2-11e7-932e-75387e89fb02?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f0cf91d0-30d2-11e7-932e-75387e89fb02?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f13ad6c0-30d2-11e7-932e-75387e89fb02?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f1542b20-30d2-11e7-932e-75387e89fb02?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f71dc110-3569-11e7-80a9-d5e0018f516c?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/f7a4a450-3569-11e7-80a9-d5e0018f516c?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+// 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/373c3110-2beb-11e7-aec8-676aa0a8f3e0?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/341e9ef0-201a-11e7-899a-8766c84b575b?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D',
+
+ 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e5830577318/35d3f010-201a-11e7-899a-8766c84b575b?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D'
+];
            
-           encoder(fileurl ,function(image)
-            {      
+var binarydata = [];
+        fileurl.forEach(function(url)
+        {
+            encoder(url , function(image)
+            {
+                binarydata.push(image);
+
+            })
+        })    
                     
                       
-
+        setTimeout(function() {
         var htmlPayload =
          "<!DOCTYPE html>" +
             "<html>" +
@@ -360,35 +397,16 @@ var fileurl = 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e583
             "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\"/>" +
             "</head>" +
             "<body>" +
-            "    <img src=\"name:HtmlForScreenshot\" /><p>sdsd <img src='data:image/jpeg;base64,"+ image + "' /></p>" +
-            "</body>" +
-            "</html>",
-
-            htmlForScreenshot =
-            "<html>" +
-            "<head>" +
-            "   <title>Embedded HTML</title>" +
-            "</head>" +
-            "<body>" +
-            "    <h1>This is a screen grab of a web page</h1>" +
-            "    <p>" +
-            "    Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-            "    Nullam vehicula magna quis mauris accumsan, nec imperdiet nisi tempus. " +
-            "    Suspendisse potenti. Duis vel nulla sit amet turpis venenatis elementum. " +
-            "    Cras laoreet quis nisi et sagittis. Donec euismod at tortor ut porta. " +
-            "    Duis libero urna, viverra idaliquam in, ornare sed orci. " +
-            "    Pellentesque condimentum gravida felis, sed pulvinar erat suscipit sit amet. Nulla id felis quis " +
-            "    sem blandit dapibus. " +
-            "    Utviverra auctor nisi ac egestas. " +
-            "    Quisque ac neque nec velit fringilla sagittis porttitor sit amet quam." +
-            "    </p><img src='http://kdeg-vm-43.scss.tcd.ie/cjfallon/chp04/imgs-431.jpg' />" +
+            "    <img src=\"name:HtmlForScreenshot\" /><p>sdsd" +
             "</body>" +
             "</html>";
-         
- 
-           
 
-            
+            binarydata.forEach(function(image)
+            {
+                htmlPayload = htmlPayload +  "<p>sdsd <img src='data:image/jpeg;base64,"+ image + "' /></p>";
+
+            })
+
 
         createPage(accessToken, {
             'Presentation': {
@@ -396,12 +414,12 @@ var fileurl = 'https://a4schoolsinternal.blob.core.windows.net/58edec1d2aac9e583
                 contentType: 'text/html'
             },
             'HtmlForScreenshot': {
-                body: image,
+                body: '',
                 contentType: 'image/jpeg'
             }
         }, callback, true);
-
-          });
+        }, 4000);
+        
     
     }
 
@@ -684,9 +702,9 @@ var counter =0;
 
 app.get('/writenote', function (req, res) {
 
-   //  createPageWithScreenshotFromHtml2(accessToken , createResultCallback);
+     createPageWithScreenshotFromHtml2(accessToken , createResultCallback);
 
-     createOneNoteArticle(accessToken , createResultCallback);
+     //createOneNoteArticle(accessToken , createResultCallback);
    
     res.end('wrote');
   
